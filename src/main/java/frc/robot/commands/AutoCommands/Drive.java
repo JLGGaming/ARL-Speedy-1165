@@ -16,7 +16,7 @@ public class Drive extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new DriveTank(-0.6, -0.6).withTimeout(4)
+      new DriveTank(-0.25, -0.25).withTimeout(3)
     );
   }
 }

@@ -79,7 +79,7 @@ public class RobotContainer {
     else if (auto.equals("Push")){
       return new PushCube();
     }
-    else if (auto.equals("PushDrive")){
+    else if (auto.equals("DrivePush")){
       return new PushCubeDrive();
     }
     else if (auto.equals("None")) {

@@ -29,25 +29,27 @@ public class DriveSubsystem extends SubsystemBase {
 
   public DriveSubsystem() {
     configMotors();
+    setBrakeMode();
   }
 
   private void configMotors() {
-    frontLeft.setInverted(false);
-    backLeft.setInverted(false);
-    frontRight.setInverted(true);
-    backRight.setInverted(true);
+    frontLeft.setInverted(true);
+    backLeft.setInverted(true);
+    frontRight.setInverted(false);
+    backRight.setInverted(false);
      
-    frontLeft.setOpenLoopRampRate(0.5);
-    frontRight.setClosedLoopRampRate(0.5);
-    backLeft.setClosedLoopRampRate(0.5);
-    backRight.setClosedLoopRampRate(0.5);
+    frontLeft.setOpenLoopRampRate(0.20);
+    frontRight.setOpenLoopRampRate(0.20);
+    backLeft.setOpenLoopRampRate(0.20);
+    backRight.setOpenLoopRampRate(0.20);
+
 
     System.out.println("Motors Configured!"); 
   }
 
 
   public void DriveArcade(double xSpeed, double ySpeed) {
-    drive.arcadeDrive(xSpeed, ySpeed);
+    drive.arcadeDrive(xSpeed, ySpeed*0.8);
   }
 
   public void DriveTank(double left, double right) {

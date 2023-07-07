@@ -16,9 +16,9 @@ public class PushCube extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new DriveTank(0.8, 0.8).withTimeout(1.5),
-      new DriveTank(-0.5, -0.5).withTimeout(2),
-      new DriveTank(0.8, 0.8).withTimeout(1.5)
+      new DriveTank(0.4, 0.4).withTimeout(1.5),
+      new DriveTank(-0.25, -0.25).withTimeout(2),
+      new DriveTank(0.4, 0.4).withTimeout(1.5)
     );
   }
 }

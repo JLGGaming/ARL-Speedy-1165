@@ -24,7 +24,7 @@ public class DriveArcade extends CommandBase {
   @Override
   public void execute() {
     double moveSpeed = RobotContainer.m_xboxDriverController.getLeftY()*-1;
-    double rotateSpeed = RobotContainer.m_xboxDriverController.getRightX();
+    double rotateSpeed = RobotContainer.m_xboxDriverController.getRightX()*-1;
     RobotContainer.m_driveSubsystem.DriveArcade(moveSpeed, rotateSpeed);
     }
 

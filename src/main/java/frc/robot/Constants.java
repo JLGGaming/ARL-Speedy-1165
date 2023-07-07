@@ -21,10 +21,10 @@ public final class Constants {
 
   public static class SparkMaxConstants { //Can ID's for the SparkMax Motor Controllers
      //Right side
-     public static final int kRightMotorFront = 4;
-     public static final int kRightMotorBack = 2;
+     public static final int kRightMotorFront = 1;
+     public static final int kRightMotorBack = 3;
      //Left side
-     public static final int kLeftMotorFront = 3;
-     public static final int kLeftMotorBack = 1;
+     public static final int kLeftMotorFront = 2;
+     public static final int kLeftMotorBack = 4;
   }
 }
