@@ -6,17 +6,20 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
-import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
-
-import frc.robot.commands.DriveArcade;
-import frc.robot.commands.AutoCommands.Drive;
-import frc.robot.commands.AutoCommands.PushCube;
-import frc.robot.commands.AutoCommands.PushCubeDrive;
+import frc.robot.commands.AutoCommands.Taxi;
+import frc.robot.commands.AutoCommands.ShootMidTaxi;
+import frc.robot.commands.AutoCommands.ShootHighTaxi;
+import frc.robot.commands.DriveCommands.DriveArcade;
+import frc.robot.commands.DriveCommands.TurnToDegree;
+import frc.robot.commands.FlywheelCommands.LoadIn;
+import frc.robot.commands.FlywheelCommands.ShootHigh;
+import frc.robot.commands.FlywheelCommands.ShootLow;
+import frc.robot.commands.FlywheelCommands.ShootMid;
 import frc.robot.Constants.OperatorConstants;
 
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.FlywheelSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -28,42 +31,35 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public final static DriveSubsystem m_driveSubsystem = new DriveSubsystem();
+  public final static FlywheelSubsystem m_flwheelSubsystem = new FlywheelSubsystem();
 
-  // Replace with CommandPS4Controller or CommandJoystick if needed
   public static final CommandXboxController m_xboxDriverController =
       new CommandXboxController(OperatorConstants.kXboxControllerPort);
 
-  public static final CommandJoystick m_joystickDriverController =
-      new CommandJoystick(OperatorConstants.kJoystickControllerPort);
+  public static final CommandXboxController m_xboxCoDriverController =
+      new CommandXboxController(OperatorConstants.kCoXboxControllerPort);
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
     m_driveSubsystem.setDefaultCommand(new DriveArcade());
-    // m_driveSubsystem.setDefaultCommand(new DriveArcadeJoystick());
+    m_flwheelSubsystem.setDefaultCommand(new LoadIn());
   }
 
-  /**
-   * Use this method to define your trigger->command mappings. Triggers can be created via the
-   * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
-   * predicate, or via the named factories in {@link
-   * edu.wpi.first.wpilibj2.command.button.CommandGenericHID}'s subclasses for {@link
-   * CommandXboxController Xbox}/{@link edu.wpi.first.wpilibj2.command.button.CommandPS4Controller
-   * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
-   * joysticks}.
-   */
   private void configureBindings() {
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    // new Trigger(m_exampleSubsystem::exampleCondition)
-    //     .onTrue(new ExampleCommand(m_exampleSubsystem));
-
-    // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
-    // cancelling on release.
-    // m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
-
-    // new JoystickButton(coDriverController, 1).onTrue(m_Drivetrain.halfSpeed());
-    
+    //Driver
+    m_xboxDriverController.povUp().onTrue(new TurnToDegree(0).withTimeout(1));
+    m_xboxDriverController.povDown().onTrue(new TurnToDegree(180).withTimeout(1));
+    m_xboxDriverController.povLeft().onTrue(new TurnToDegree(-90).withTimeout(1));
+    m_xboxDriverController.povRight().onTrue(new TurnToDegree(90).withTimeout(1));
+    m_xboxDriverController.x().onTrue(m_driveSubsystem.resetGyro());
+    //Co Driver
+    m_xboxCoDriverController.povUp().onTrue(new ShootHigh());
+    m_xboxCoDriverController.povLeft().onTrue(new ShootMid());
+    m_xboxCoDriverController.povRight().onTrue(new ShootMid());
+    m_xboxCoDriverController.povDown().onTrue(new ShootLow());
   } 
 
   /**
@@ -73,14 +69,20 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand(String auto) {
     // An example command will be run in autonomous
-    if (auto.equals("Drive")){
-      return new Drive();
+    if (auto.equals("Taxi")){
+      return new Taxi();
     }
-    else if (auto.equals("Push")){
-      return new PushCube();
+    else if (auto.equals("ShootHighTaxi")){
+      return new ShootHighTaxi();
     }
-    else if (auto.equals("DrivePush")){
-      return new PushCubeDrive();
+    else if (auto.equals("ShootMidTaxi")){
+      return new ShootMidTaxi();
+    }
+    else if (auto.equals("ShootMid")) {
+      return new ShootMid();
+    }
+    else if (auto.equals("ShootHigh")) {
+      return new ShootHigh();
     }
     else if (auto.equals("None")) {
       System.out.println("No Auto Running");

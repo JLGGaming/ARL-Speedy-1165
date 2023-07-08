@@ -5,20 +5,22 @@
 package frc.robot.commands.AutoCommands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.commands.DriveTank;
+import frc.robot.commands.DriveCommands.DriveTank;
+import frc.robot.commands.DriveCommands.DriveToTilt;
+import frc.robot.commands.FlywheelCommands.ShootHigh;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class PushCubeDrive extends SequentialCommandGroup {
-  /** Creates a new DriveForwardBack. */
-  public PushCubeDrive() {
+public class Balance extends SequentialCommandGroup {
+  /** Creates a new Balance. */
+  public Balance() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new DriveTank(0.6, 0.6).withTimeout(1.5),
-      new DriveTank(-0.45, -0.45).withTimeout(2),
-      new DriveTank(0.6, 0.6).withTimeout(1),
-      new DriveTank(-0.45, -0.45).withTimeout(4)
-  );}
+      new ShootHigh(),
+      new DriveTank(-0.2, -0.2).withTimeout(3),
+      new DriveToTilt()
+    );
+  }
 }

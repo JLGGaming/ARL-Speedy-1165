@@ -15,8 +15,7 @@ package frc.robot;
 public final class Constants {
   public static class OperatorConstants {
     public static final int kXboxControllerPort = 0;
-    public static final int kJoystickControllerPort = 1;
-
+    public static final int kCoXboxControllerPort =  1;
   }
 
   public static class SparkMaxConstants { //Can ID's for the SparkMax Motor Controllers
@@ -26,5 +25,15 @@ public final class Constants {
      //Left side
      public static final int kLeftMotorFront = 2;
      public static final int kLeftMotorBack = 4;
+  }
+
+  public static class FlywheelConstants {
+    public static final int kRightFlywheelMotor = 5;
+    public static final int kLeftFlywheelMotor = 6;
+
+    public static final double kSpeedLow = 0.3; 
+    public static final double kSpeedMid= 0.3945; 
+    public static final double kSpeedHigh = 0.43;
+    public static final double kSpeedMax = 0.8;  
   }
 }

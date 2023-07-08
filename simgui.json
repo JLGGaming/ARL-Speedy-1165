@@ -1,6 +1,26 @@
 {
   "HALProvider": {
     "Other Devices": {
+      "Compressor[0]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Compressor[1]": {
+        "header": {
+          "open": true
+        }
+      },
+      "SPARK MAX [1]": {
+        "header": {
+          "open": true
+        }
+      },
+      "SPARK MAX [4]": {
+        "header": {
+          "open": true
+        }
+      },
       "SPARK MAX [6]": {
         "header": {
           "open": true
@@ -20,6 +40,31 @@
         "header": {
           "open": true
         }
+      },
+      "Talon SRX[6]": {
+        "header": {
+          "open": true
+        }
+      },
+      "navX-Sensor[0]": {
+        "header": {
+          "open": true
+        }
+      }
+    },
+    "Solenoids": {
+      "0": {
+        "header": {
+          "open": true
+        }
+      },
+      "1": {
+        "header": {
+          "open": true
+        }
+      },
+      "window": {
+        "visible": true
       }
     }
   },

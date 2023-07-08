@@ -20,9 +20,12 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
   
-  private static final String kDrive = "Drive";
-  private static final String kPush = "Push";
-  private static final String kDrivePush = "DrivePush";
+  private static final String kTaxi = "Taxi";
+  private static final String kShootHigh = "ShootHigh";
+  private static final String kShootHighTaxi = "ShootHighTaxi";
+  private static final String kShootMid = "ShootMid";
+  private static final String kShootMidTaxi = "ShootMidTaxi";
+  private static final String kBalance = "Balance";
   private static final String kNone = "None";
 
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
@@ -37,9 +40,13 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
 
-    m_chooser.setDefaultOption("Push Cube, Taxi", kDrivePush);
-    m_chooser.addOption("Backwards Taxi", kDrive);
-    m_chooser.addOption("Push Cube", kPush);
+    m_chooser.setDefaultOption("Shoot High, Taxi", kShootHighTaxi);
+
+    m_chooser.addOption("Taxi", kTaxi);
+    m_chooser.addOption("Shoot High", kShootHigh);
+    m_chooser.addOption("Shoot Mid", kShootMid);
+    m_chooser.addOption("Shoot Mid, Taxi", kShootMidTaxi);
+    m_chooser.addOption("Balance", kBalance);
     m_chooser.addOption("None", kNone);
 
     SmartDashboard.putData("Autonomous Program", m_chooser);

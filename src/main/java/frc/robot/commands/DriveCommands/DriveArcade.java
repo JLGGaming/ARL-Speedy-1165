@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.DriveCommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
@@ -26,7 +26,7 @@ public class DriveArcade extends CommandBase {
     double moveSpeed = RobotContainer.m_xboxDriverController.getLeftY()*-1;
     double rotateSpeed = RobotContainer.m_xboxDriverController.getRightX()*-1;
     RobotContainer.m_driveSubsystem.DriveArcade(moveSpeed, rotateSpeed);
-    }
+  }
 
   // Called once the command ends or is interrupted.
   @Override

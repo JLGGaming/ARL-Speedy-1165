@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.DriveCommands;
 
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -13,14 +13,6 @@ public class DriveTank extends CommandBase {
   /** Creates a new DriveTank. */
   public double leftSpeed;
   public double rightSpeed;
-
-
-
-  public DriveTank() {
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_driveSubsystem);
-
-  }
 
   public DriveTank(double left, double right) {
     // Use addRequirements() here to declare subsystem dependencies.
